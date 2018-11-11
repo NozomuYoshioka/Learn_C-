@@ -37,6 +37,9 @@ private:
 
 class Parser {
 
+private:
+  static const uint32_t RESERVE_ROW = 100000;
+
 public:
   Parser(const char *, const char delim = ',');
   ~Parser();

@@ -46,7 +46,9 @@ std::ostringstream &operator<<(std::ostringstream &oss, const Row &row) {
  */
 
 Parser::Parser(const char *fileName, const char delim)
-    : f_FileName(fileName), f_Delim(delim), f_IsParsed(false) {}
+    : f_FileName(fileName), f_Delim(delim), f_IsParsed(false) {
+  this->f_Content.reserve(RESERVE_ROW);
+}
 
 Parser::~Parser() {
   for (Row *row : this->f_Content) {
@@ -132,7 +134,7 @@ const std::string Parser::getHeaderElement(uint32_t pos) {
 const std::string Parser::dumpAllData() const noexcept {
   std::ostringstream oss;
   for (Row *row : this->f_Content) {
-    oss << *row << "hoge" << std::endl;
+    oss << *row << std::endl;
   }
   return oss.str();
 }
